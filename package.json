@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-redis-proxy",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Write index.html to redis on each build",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/elucid/ember-cli-redis-proxy",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Justin Giancola",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
