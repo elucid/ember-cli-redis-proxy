@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-redis-proxy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Write index.html to redis on each build",
   "directories": {
     "doc": "doc",
