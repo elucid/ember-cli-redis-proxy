@@ -12,7 +12,7 @@ module.exports = {};
 
 module.exports.name = 'ember-cli-redis-proxy'
 
-var configPath = path.join(process.cwd(), 'config', 'environment');
+var configPath = path.join(process.cwd(), 'config', 'deploy');
 
 function indexFile(indexPath) {
   return readFile(indexPath, {encoding: 'utf8'});
@@ -37,14 +37,14 @@ module.exports.postBuild = function(result) {
     return;
   }
 
-  var config = require(configPath)(environment);
+  var redisConfig = require(configPath)[environment].store;
 
   var projectName = this.project.name();
   var indexKey = projectName + ":__development__";
   var currentKey = projectName + ":current";
   var indexPath = path.join(result.directory, 'index.html');
 
-  var adapter = redis.createClient(config);
+  var adapter = redis.createClient(redisConfig);
 
   var uploadToRedis = function(data) {
     return adapter.mset(indexKey, data, currentKey, indexKey);
