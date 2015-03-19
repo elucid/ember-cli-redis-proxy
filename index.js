@@ -40,16 +40,17 @@ module.exports.postBuild = function(result) {
   var config = require(configPath)(environment);
 
   var projectName = this.project.name();
-  var redisKey = projectName + ":current";
+  var indexKey = projectName + ":__development__";
+  var currentKey = projectName + ":current";
   var indexPath = path.join(result.directory, 'index.html');
 
   var adapter = redis.createClient(config);
 
   var uploadToRedis = function(data) {
-    return adapter.set(redisKey, data);
+    return adapter.mset(indexKey, data, currentKey, indexKey);
   }
 
   return indexFile(indexPath)
     .then(uploadToRedis, fileNotFound)
-    .then(successfullyWroteKey.bind(null, redisKey))
+    .then(successfullyWroteKey.bind(null, indexKey))
 };
