@@ -33,11 +33,12 @@ function successfullyWroteKey(key) {
 module.exports.postBuild = function(result) {
   var environment = process.env.EMBER_ENV || 'development';
 
-  if (environment !== 'development') {
+  var config = require(configPath);
+
+  if (Object.keys(config).indexOf(environment) === -1){
     return;
   }
-
-  var redisConfig = require(configPath)[environment].store;
+  var redisConfig = config[environment].store;
 
   var projectName = this.project.name();
   var indexKey = projectName + ":__development__";
