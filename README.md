@@ -1,3 +1,7 @@
+# IMPORTANT
+
+The functionality provided by this addon is now built into ember-cli-deploy (as of 0.5.0) so you should probably just use that instead. This addon will **not** be upgraded to be 0.5.x compatible. Please see http://ember-cli.github.io/ember-cli-deploy/docs/v0.5.x/development-workflow/ for more information.
+
 # ember-cli-redis-proxy
 
 Write your ember-cli app's index.html to redis on each build in development mode.
